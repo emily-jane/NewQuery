@@ -1,29 +1,29 @@
 $( document ).ready(function() {
   thermostat = new Thermostat();
 
-  $("#temperature").html(thermostat.temperature);
-  $("#temperature").css("color", thermostat.colour);
-
-  $("#increase").click(function(){
-
-    thermostat.increaseTemperature();
+  var setTempColour = function(){
     $("#temperature").html(thermostat.temperature);
     $("#temperature").css("color", thermostat.colour);
+
+  }):
+
+  setTempColour();
+
+  $("#increase").click(function(){
+    thermostat.increaseTemperature();
+    setTempColour();
 
   });
 
   $("#decrease").click(function(){
-
       thermostat.decreaseTemperature();
-      $("#temperature").html(thermostat.temperature);
-      $("#temperature").css("color", thermostat.colour);
+      setTempColour();
 
   });
 
   $("#reset").click(function(){
       thermostat.resetTemperature();
-      $("#temperature").html(thermostat.temperature);
-      $("#temperature").css("color", thermostat.colour);
+      setTempColour();
 
   });
 

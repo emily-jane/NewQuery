@@ -1,5 +1,4 @@
-$(document).ready(function() {
-
+$( document ).ready(function() {
   thermostat = new Thermostat();
 
   var setTempColour = function(){
@@ -9,24 +8,23 @@ $(document).ready(function() {
 
   setTempColour();
 
-  $("#increase").click(function(){
+  $("button:eq(0)").click(function(){
     thermostat.increaseTemperature();
     setTempColour();
   });
 
-  $("#decrease").click(function(){
+  $("button:eq(1)").click(function(){
       thermostat.decreaseTemperature();
       setTempColour();
   });
 
-  $("#reset").click(function(){
+  $("button:eq(2)").click(function(){
       thermostat.resetTemperature();
       setTempColour();
   });
 
-  $("#power_save").click(function(){
-    ($("#power_save").is(":checked")) ? thermostat.powerSavemodeOn() : thermostat.powerSavemodeOff();
+  $('input[type="checkbox"]').eq(0).click(function(){
+    ($('input[type="checkbox"]').eq(0).is(":checked")) ? thermostat.powerSavemodeOn() : thermostat.powerSavemodeOff();
     setTempColour();
   });
-
 });

@@ -25,6 +25,7 @@ $( document ).ready(function() {
 
   $("#power_save").click(function(){
     ($("#power_save").is(":checked")) ? thermostat.powerSavemodeOn() : thermostat.powerSavemodeOff();
+      setTempColour();
   });
 
 });

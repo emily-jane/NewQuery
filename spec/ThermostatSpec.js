@@ -71,6 +71,15 @@ describe('Thermostat', function(){
       expect(thermostat.powerSavemode).toBe(true);
     });
 
+    it("it sets temp to powersave max if over", function() {
+      thermostat.powerSavemodeOff();
+      for (i = 0; i < 15; i++) {
+        thermostat.increaseTemperature();
+      }
+      thermostat.powerSavemodeOn();
+      expect(thermostat.temperature).toEqual(25);
+    })
+
   });
 
   describe('thermostat reset', function(){

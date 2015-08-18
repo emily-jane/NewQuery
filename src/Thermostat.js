@@ -27,6 +27,7 @@ Thermostat.prototype.powerSavemodeOff = function(){
 
 Thermostat.prototype.powerSavemodeOn = function(){
   this.powerSavemode = true;
+  this.setPowersaveMaxTemp();
 };
 
 Thermostat.prototype.resetTemperature = function(){
@@ -45,4 +46,8 @@ Thermostat.prototype.changeColour = function(){
     this.colour = "green";
   }
 
+};
+
+Thermostat.prototype.setPowersaveMaxTemp = function() {
+  this.temperature = (this.temperature > this.powerSaveMaxTemp) ? this.powerSaveMaxTemp : this.temperature
 };

@@ -22,12 +22,6 @@ var resetTemperature = document.getElementById('reset');
   };
 
 var powerSaveStatus = document.getElementById('power_save');
-
   powerSaveStatus.onclick = function() {
-  if (powerSaveStatus.checked) {
-    thermostat.powerSavemodeOn();
-    temperature.innerHTML = thermostat.temperature;
-  } else {
-    thermostat.powerSavemodeOff();
-  }
+    (powerSaveStatus.checked) ? thermostat.powerSavemodeOn() : thermostat.powerSavemodeOff();
 };

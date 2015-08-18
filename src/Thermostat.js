@@ -47,7 +47,7 @@ Thermostat.prototype.changeColour = function() {
 };
 
 Thermostat.prototype.setPowersaveMaxTemp = function() {
-  this.temperature = (this.temperature > this.powerSaveMaxTemp) ? this.powerSaveMaxTemp : this.temperature
+  if (this.temperature > this.powerSaveMaxTemp) this.temperature = this.powerSaveMaxTemp;
 };
 
 Thermostat.prototype.MaxTemp = function() {

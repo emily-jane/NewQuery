@@ -1,4 +1,5 @@
-$( document ).ready(function() {
+$(document).ready(function() {
+
   thermostat = new Thermostat();
 
   var setTempColour = function(){
@@ -25,7 +26,7 @@ $( document ).ready(function() {
 
   $("#power_save").click(function(){
     ($("#power_save").is(":checked")) ? thermostat.powerSavemodeOn() : thermostat.powerSavemodeOff();
-      setTempColour();
+    setTempColour();
   });
 
 });

@@ -6,48 +6,44 @@ describe('Thermostat', function(){
 
   var thermostat;
 
-  describe('thermostat should show current termperature', function(){
+  describe('temperature', function(){
 
-    it('thermostat starts at 20 degrees', function(){
+    it('starts at 20', function(){
       expect(thermostat.temperature).toBe(20);
     });
 
-  });
-
-  describe('Thermostat temperature value can be modified', function(){
-
-    it('temperature can be increased', function(){
+    it('can be increased', function(){
       for (i = 0; i < 6; i++) {
-      thermostat.increaseTemperature();
+        thermostat.increaseTemperature();
       }
       expect(thermostat.temperature).toBe(25);
     });
 
-    it('temperature can be decreased', function(){
+    it('can be decreased', function(){
       for (i = 0; i < 5; i++) {
-      thermostat.decreaseTemperature();
+        thermostat.decreaseTemperature();
       }
       expect(thermostat.temperature).toBe(15);
     });
 
-    it('temperature can not be below 10 degrees', function(){
+    it('has min of 10', function(){
       for (i = 0; i < 11; i++) {
-      thermostat.decreaseTemperature();
+        thermostat.decreaseTemperature();
       }
       expect(thermostat.temperature).toBe(10)
     });
 
-    it('temperature can not exceed 25 degrees when power saving mode is on', function(){
+    it('caps at 25 with power save on', function(){
       for (i = 0; i < 6; i++) {
-      thermostat.increaseTemperature();
+        thermostat.increaseTemperature();
       }
       expect(thermostat.temperature).toBe(25)
     });
 
-    it('temperature can not exceed 32 degrees when power saving mode is off', function(){
+    it('caps at 32', function(){
       thermostat.powerSavemode = false;
       for (i = 0; i < 13; i++) {
-      thermostat.increaseTemperature();
+        thermostat.increaseTemperature();
       }
       expect(thermostat.temperature).toBe(32)
     });
@@ -90,29 +86,45 @@ describe('Thermostat', function(){
       expect(thermostat.temperature).toBe(20);
     });
 
+    it("when under default", function() {
+      for (i = 0; i < 10; i++) {
+        thermostat.increaseTemperature();
+      }
+      thermostat.resetTemperature();
+      expect(thermostat.temperature).toEqual(20)
+    });
+
+    it("when over default", function() {
+      for (i = 0; i < 8; i++) {
+        thermostat.decreaseTemperature();
+      }
+      thermostat.resetTemperature();
+      expect(thermostat.temperature).toEqual(20)
+    });
+
   });
 
   describe('thermostat display colour', function(){
 
-    it('to be colour green when temperature is < 18', function(){
-      thermostat.decreaseTemperature();
-      thermostat.decreaseTemperature();
-      thermostat.decreaseTemperature();
+    it('green when < 18', function(){
+
+      for (i = 0; i < 3; i++) {
+        thermostat.decreaseTemperature();
+      }
       expect(thermostat.colour).toBe("green");
     });
 
-    it('to be colour red when temperature is >= 25', function(){
+    it('red when >= 25', function(){
       for (i = 0; i < 5; i++) {
-      thermostat.increaseTemperature();
+        thermostat.increaseTemperature();
       }
       expect(thermostat.colour).toBe("red");
     });
 
-    it('to be colour yellow by default', function(){
+    it('yellow between 18 to 24', function(){
       expect(thermostat.colour).toBe("yellow");
     });
 
   });
-
 
 });

@@ -1,5 +1,6 @@
 var Thermostat = function(){
   this.temperature = 20;
+  this.defaultTemperature = 20;
   this.powerSavemode = true;
   this.defaultMaxTemp = 32;
   this.minTemp = 10;
@@ -7,12 +8,9 @@ var Thermostat = function(){
   this.colour = "yellow";
 };
 
-Thermostat.prototype.increaseTemperature = function(){
-  if (this.powerSavemode) {
-    this.temperature = (this.temperature >= this.powerSaveMaxTemp) ? this.powerSaveMaxTemp :  this.temperature += 1;
-  } else {
-    this.temperature = (this.temperature >= this.defaultMaxTemp) ? this.defaultMaxTemp :  this.temperature += 1;
-  }
+
+Thermostat.prototype.increaseTemperature = function() {
+  this.temperature = (this.temperature >= this.MaxTemp()) ? this.MaxTemp() : this.temperature + 1;
   this.changeColour();
 };
 
@@ -31,23 +29,27 @@ Thermostat.prototype.powerSavemodeOn = function(){
 };
 
 Thermostat.prototype.resetTemperature = function(){
-  this.temperature = 20;
+  this.temperature = this.defaultTemperature;
   this.changeColour();
 };
 
-Thermostat.prototype.changeColour = function(){
-  if (this.temperature >= 25) {
-    this.colour = "red";
-  }
-  if (this.temperature < 25) {
-    this.colour = "yellow";
-  }
-  if (this.temperature < 18) {
-    this.colour = "green";
-  }
-
+Thermostat.prototype.changeColour = function() {
+  switch(true) {
+    case this.temperature < 18:
+      this.colour = "green";
+      break;
+    case this.temperature < this.powerSaveMaxTemp:
+      this.colour = "yellow";
+      break;
+    case this.temperature >= this.powerSaveMaxTemp:
+      this.colour = "red";
+  };
 };
 
 Thermostat.prototype.setPowersaveMaxTemp = function() {
   this.temperature = (this.temperature > this.powerSaveMaxTemp) ? this.powerSaveMaxTemp : this.temperature
+};
+
+Thermostat.prototype.MaxTemp = function() {
+  return (this.powerSavemode) ? this.powerSaveMaxTemp : this.defaultMaxTemp
 };

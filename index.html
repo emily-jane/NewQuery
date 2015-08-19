@@ -7,12 +7,16 @@
 </head>
 <body>
 
-<h1 id="temperature"></h1>
-<button type="button">up</button>
-<button type="button">down</button>
-<button type="button">reset</button>
-<input type="checkbox" checked > powersave<br />
+  <h1 id="temperature"></h1>
+  <button data-temp-control="up" >up</button>
+  <button data-temp-control="down" >down</button>
+  <button data-temp-control="reset" >reset</button>
+  <input  data-temp-control="powersave" type="checkbox" checked> powersave<br />
 
+<section id="weather">
+
+</section>
+<div id="weatherImage"></div>
 </body>
 <script type="text/javascript" src="src/Thermostat.js"></script>
 <!-- <script type="text/javascript" src="src/app.js"></script> -->

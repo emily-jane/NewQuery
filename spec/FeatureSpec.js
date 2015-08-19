@@ -1,9 +1,12 @@
 describe('Feature tests',function(){
 
+  var thermostat = new Thermostat();
+
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';
     loadFixtures('index.html');
     $.holdReady(false);
+
   });
 
   it('displays default temperature', function() {
@@ -98,22 +101,15 @@ describe('Feature tests',function(){
     expect($('#temperature').css("color")).toBe('rgb(255, 255, 0)')
   });
 
-  xit('has a weather element', function() {
-    console.log("#weather")
-    expect('#weather').toContainText('City: London Weather: 20.12scattered clouds');
-  });
+    it('calls weather API', function() {
+      spyOn($, "getJSON");
+      expect($.getJSON).toHaveBeenCalled();
+    });
+
 });
 
-// describe('Feature tests',function(){
-//   it('calls weather API', funtion() {
-//   spyOn($, "getJSON");
-//   weatherCall();
 
 
-
-//   });
-
-// }):
 
 
 

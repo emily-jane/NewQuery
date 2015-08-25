@@ -13,7 +13,8 @@ var upTemperature = document.getElementById('increase');
   };
 
 var downTemperature = document.getElementById('decrease');
-  downTemperature.onclick = function() {
+
+downTemperature.onclick = function() {
     thermostat.decreaseTemperature();
     temperature.innerHTML = thermostat.temperature;
     document.getElementById('temperature').style.color = thermostat.colour;

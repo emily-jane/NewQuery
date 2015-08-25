@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="lib/jquery.min.js"></script>
+  <script src="lib/newquery2.js"></script>
   <meta charset="utf-8">
   <title>Thermostat</title>
 </head>
 <body>
 
-  <h1 id="temperature"></h1>
-  <button data-temp-control="up" >up</button>
+  <h1 id="temperature">20</h1>
+
+  <p class="test-class">test one</p>
+  <p class="test-class">test two</p>
+  <button class="control-button" data-temp-control="up" >up</button>
   <button data-temp-control="down" >down</button>
   <button data-temp-control="reset" >reset</button>
   <input  data-temp-control="powersave" type="checkbox" checked> powersave<br />
@@ -18,7 +21,7 @@
 </section>
 <div id="weatherImage"></div>
 </body>
-<script type="text/javascript" src="src/Thermostat.js"></script>
+<!-- <script type="text/javascript" src="src/Thermostat.js"></script> -->
 <!-- <script type="text/javascript" src="src/app.js"></script> -->
-<script type="text/javascript" src="src/appJquery.js"></script>
+<!-- <script type="text/javascript" src="src/appJquery.js"></script> -->
 </html>

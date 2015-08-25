@@ -19,7 +19,7 @@ describe('Feature tests',function(){
   });
 
   it('reads 2nd class element', function() {
-    expect(newQuery.getElement('.test-class').eq(1)).toContain('test two')
+    expect(newQuery.getElement('.test-class')).toContain('test two')
   });
 
   // it('decreases temperature with down button', function() {

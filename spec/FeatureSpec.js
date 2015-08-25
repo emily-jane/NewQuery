@@ -1,7 +1,7 @@
 describe('Feature tests',function(){
 
   var thermostat = new Thermostat();
-  var newQuery = new NewQuery();
+  // var newQuery = new NewQuery();
 
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';
@@ -11,15 +11,15 @@ describe('Feature tests',function(){
   });
 
   it('reads id element', function() {
-    expect(newQuery.getElement('#temperature')).toEqual('20');
+    expect(NewQuery.getElement('#temperature')).toEqual('20');
   });
 
   it('reads class element', function() {
-    expect(newQuery.getElement('.test-class')).toContain('test one')
+    expect(NewQuery.getElement('.test-class')).toContain('test one')
   });
 
   it('reads 2nd class element', function() {
-    expect(newQuery.getElement('.test-class')).toContain('test two')
+    expect(NewQuery.getElement('.test-class')).toContain('test two')
   });
 
   // it('decreases temperature with down button', function() {

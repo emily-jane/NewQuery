@@ -10,8 +10,6 @@ describe('Feature tests',function(){
 
   });
 
-
-
   it('reads id element', function() {
     expect(NewQuery.getElement('#temperature')).toContain('20');
   });
@@ -21,7 +19,7 @@ describe('Feature tests',function(){
 
   });
 
-  it('reads class element', function() {
+  it('reads first element with first', function() {
     expect(NewQuery.getElement('.test-class').first()).toContainText('test one')
 
   });
@@ -29,6 +27,11 @@ describe('Feature tests',function(){
   it('reads 2nd class element', function() {
     expect(NewQuery.getElement('.test-class').eq(1)).toContainText('test two')
   });
+
+  it('reads last element with last', function() {
+    expect(NewQuery.getElement('.test-class').last()).toContainText('test two')
+  });
+
 
   // it('decreases temperature with down button', function() {
   //   $('button[data-temp-control="down"]').click();

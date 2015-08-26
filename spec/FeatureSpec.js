@@ -10,16 +10,24 @@ describe('Feature tests',function(){
 
   });
 
+
+
   it('reads id element', function() {
-    expect(NewQuery.getElement('#temperature')).toEqual('20');
+    expect(NewQuery.getElement('#temperature')).toContain('20');
   });
 
   it('reads class element', function() {
-    expect(NewQuery.getElement('.test-class')).toContain('test one')
+    expect(NewQuery.getElement('.test-class').eq(0)).toContainText('test one')
+
+  });
+
+  it('reads class element', function() {
+    expect(NewQuery.getElement('.test-class').first()).toContainText('test one')
+
   });
 
   it('reads 2nd class element', function() {
-    expect(NewQuery.getElement('.test-class')).toContain('test two')
+    expect(NewQuery.getElement('.test-class').eq(1)).toContainText('test two')
   });
 
   // it('decreases temperature with down button', function() {

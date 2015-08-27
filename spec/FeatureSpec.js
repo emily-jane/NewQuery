@@ -1,7 +1,7 @@
 describe('Feature tests',function(){
 
   var thermostat = new Thermostat();
-  // var newQuery = new NewQuery();
+  //var newQuery = new NewQuery();
 
   beforeEach(function(){
     jasmine.getFixtures().fixturesPath = '.';
@@ -10,28 +10,40 @@ describe('Feature tests',function(){
 
   });
 
-  it('reads id element', function() {
-    expect(NewQuery.getElement('#temperature')).toContain('20');
+  describe('get element', function(){
+
+    it('reads id element', function() {
+      expect(NewQuery.getElement('#temperature')).toContain('20');
+    });
+
+    it('reads class element', function() {
+      expect(NewQuery.getElement('.test-class').eq(0)).toContainText('test one')
+
+    });
+
+    it('reads first element with first', function() {
+      expect(NewQuery.getElement('.test-class').first()).toContainText('test one')
+
+    });
+
+    it('reads 2nd class element', function() {
+      expect(NewQuery.getElement('.test-class').eq(1)).toContainText('test two')
+    });
+
+    it('reads last element with last', function() {
+      expect(NewQuery.getElement('.test-class').last()).toContainText('test two')
+    });
+
   });
 
-  it('reads class element', function() {
-    expect(NewQuery.getElement('.test-class').eq(0)).toContainText('test one')
+
+  describe('.html', function(){
+
+    it('reads id element', function() {
+      expect(NewQuery.getElement('.test-class').eq(0).html('monkey')).toEqual('monkey');
+    });
 
   });
-
-  it('reads first element with first', function() {
-    expect(NewQuery.getElement('.test-class').first()).toContainText('test one')
-
-  });
-
-  it('reads 2nd class element', function() {
-    expect(NewQuery.getElement('.test-class').eq(1)).toContainText('test two')
-  });
-
-  it('reads last element with last', function() {
-    expect(NewQuery.getElement('.test-class').last()).toContainText('test two')
-  });
-
 
   // it('decreases temperature with down button', function() {
   //   $('button[data-temp-control="down"]').click();

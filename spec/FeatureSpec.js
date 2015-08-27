@@ -12,26 +12,26 @@ describe('Feature tests',function(){
 
   describe('get element', function(){
 
-    it('reads id element', function() {
+    it('gets element by id', function() {
       expect(NewQuery.getElement('#temperature')).toContain('20');
     });
 
     it('reads class element', function() {
-      expect(NewQuery.getElement('.test-class').eq(0)).toContainText('test one')
+      expect(NewQuery.getElement('.test-class').eq(0).html()).toEqual('test one')
 
     });
 
     it('reads first element with first', function() {
-      expect(NewQuery.getElement('.test-class').first()).toContainText('test one')
+      expect(NewQuery.getElement('.test-class').first().html()).toEqual('test one')
 
     });
 
     it('reads 2nd class element', function() {
-      expect(NewQuery.getElement('.test-class').eq(1)).toContainText('test two')
+      expect(NewQuery.getElement('.test-class').eq(1).html()).toEqual('test two')
     });
 
     it('reads last element with last', function() {
-      expect(NewQuery.getElement('.test-class').last()).toContainText('test two')
+      expect(NewQuery.getElement('.test-class').last().html()).toEqual('test two')
     });
 
   });
@@ -40,7 +40,7 @@ describe('Feature tests',function(){
   describe('.html', function(){
 
     it('reads id element', function() {
-      expect(NewQuery.getElement('.test-class').eq(0).html('monkey')).toEqual('monkey');
+      expect(NewQuery.getElement('.test-class').eq(0).html()).toEqual('test one');
     });
 
   });
